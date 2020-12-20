@@ -27,6 +27,7 @@ module.exports = {
     'config/**/*.js',
     'scripts/**/*.js',
     '.eslintrc.js',
+    'commitlint.config.js'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
