@@ -10,6 +10,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
@@ -306,7 +307,15 @@ module.exports = function (webpackEnv) {
                         {
                             test: /\.(js|mjs|jsx|ts|tsx)$/,
                             include: paths.appSrc,
-                            loader: require.resolve('babel-loader'),
+                            use: [
+                                { loader: require.resolve('babel-loader') },
+                                {
+                                    loader: '@linaria/webpack-loader',
+                                    options: {
+                                        sourceMap: process.env.NODE_ENV !== 'production',
+                                    },
+                                }
+                            ],
                             options: {
                                 customize: require.resolve(
                                     'babel-preset-react-app/webpack-overrides'
@@ -372,6 +381,23 @@ module.exports = function (webpackEnv) {
                                 inputSourceMap: shouldUseSourceMap,
                             },
                         },
+                        {
+                            test: /\.css$/,
+                            use: [
+                              {
+                                loader: MiniCssExtractPlugin.loader,
+                                options: {
+                                  hmr: process.env.NODE_ENV !== 'production',
+                                },
+                              },
+                              {
+                                loader: 'css-loader',
+                                options: {
+                                  sourceMap: process.env.NODE_ENV !== 'production',
+                                },
+                              },
+                            ],
+                          },
                         // "file" loader makes sure those assets get served by WebpackDevServer.
                         // When you `import` an asset, you get its (virtual) filename.
                         // In production, they would get copied to the `build` folder.
@@ -395,6 +421,9 @@ module.exports = function (webpackEnv) {
             ],
         },
         plugins: [
+            new MiniCssExtractPlugin({
+                filename: 'styles.css',
+              }),
             // Generates an `index.html` file with the <script> injected.
             new HtmlWebpackPlugin(
                 Object.assign(
@@ -458,6 +487,7 @@ module.exports = function (webpackEnv) {
                 // the bundled socket handling logic can be eliminated.
                 sockIntegration: false,
             },
+            
         }),
             // Watcher doesn't work well if you mistype casing in a path so we use
             // a plugin that prints an error when you attempt to do this.
