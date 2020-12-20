@@ -27,7 +27,6 @@ module.exports = {
     'config/**/*.js',
     'scripts/**/*.js',
     '.eslintrc.js',
-    'commitlint.config.js'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -83,6 +82,7 @@ module.exports = {
     'no-empty': ['error', { allowEmptyCatch: true }],
     'no-eq-null': ['warn'],
     'no-irregular-whitespace': ['error', { skipTemplates: true }],
+    'prettier/prettier': ['error', { printWidth: 120, tabWidth: 4, semi: false, singleQuote: true }],
     'prefer-arrow-callback': ['warn'],
     quotes: ['error', 'single'],
     radix: ['error'],
