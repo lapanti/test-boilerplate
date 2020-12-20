@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "declaration": false,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "lib": ["dom", "esnext"],
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
+        "strict": true,
+        "target": "esnext",
+        "typeRoots": ["./node_modules/@types"],
+        "types": ["react", "react-dom", "webpack-env"]
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/.eslintrc.js",
+    ],
+    "exclude": ["./config", "./coverage", "./dist", "./scripts" , "./public"]
+}
