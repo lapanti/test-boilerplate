@@ -16,7 +16,7 @@
         "strict": true,
         "target": "esnext",
         "typeRoots": ["./node_modules/@types"],
-        "types": ["react", "react-dom", "webpack-env"]
+        "types": ["react", "react-dom", "webpack-env", "jest"]
     },
     "include": [
         "**/*.ts",
