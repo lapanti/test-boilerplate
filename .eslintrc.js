@@ -107,6 +107,7 @@ module.exports = {
     ],
     'react/no-unused-state': ['error'],
     'react/prefer-stateless-function': ['warn'],
+    'react/prop-types': ['off'],
     'react/style-prop-object': ['error'],
     semi: ['error', 'never'],
     'simple-import-sort/exports': ['error'],

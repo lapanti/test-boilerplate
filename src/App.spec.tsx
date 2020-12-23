@@ -6,7 +6,7 @@ import React from 'react'
 
 import App from './App'
 
-jest.mock('./app/Header', () => () => <span>header</span>)
+jest.mock('./components/Header', () => () => <span>header</span>)
 jest.mock('./app/Main', () => () => <span>main</span>)
 
 const css = fs.readFileSync(path.resolve('./.linaria-cache/src/App.linaria.css'), 'utf8')

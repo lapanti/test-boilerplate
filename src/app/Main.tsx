@@ -1,13 +1,16 @@
 import React from 'react'
 
+import Link from '../components/Link'
+
 const Main: React.FunctionComponent = () => (
     <main>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu libero in ligula luctus rutrum eget a dui.
-            Nullam tempor massa eu neque viverra, quis congue orci gravida. Maecenas id ex augue. Morbi consequat
-            suscipit lectus, vitae aliquet nunc scelerisque eget. Sed ultricies, felis sed vehicula interdum, metus
-            ipsum porttitor purus, a hendrerit arcu lacus sit amet ante. Sed sed orci ligula. Maecenas nibh tellus,
-            porta a nisi a, dapibus tincidunt risus. Pellentesque et ipsum a nunc gravida aliquam a id nisl.
+            Lorem ipsum dolor sit amet, <Link to="/">consectetur</Link> adipiscing elit. Donec eu libero in ligula
+            luctus rutrum eget a dui. Nullam tempor massa eu neque viverra, quis congue orci gravida. Maecenas id ex
+            augue. Morbi consequat suscipit lectus, vitae aliquet nunc scelerisque eget. Sed ultricies, felis sed
+            vehicula interdum, metus ipsum porttitor purus, a hendrerit arcu lacus sit amet ante. Sed sed orci ligula.
+            Maecenas nibh tellus, porta a nisi a, dapibus tincidunt risus. Pellentesque et ipsum a nunc gravida aliquam
+            a id nisl.
         </p>
         <p>
             Etiam pulvinar, augue non semper commodo, urna neque egestas augue, eu ultricies magna sem et nisi.

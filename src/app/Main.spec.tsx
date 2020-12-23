@@ -3,13 +3,23 @@ import React from 'react'
 
 import Main from './Main'
 
+jest.mock('../components/Link', () => ({ to, children }: { to: string; children: string }) => (
+    <a href={to}>{children}</a>
+))
+
 describe('<Main />', () => {
     it('should match snapshot', () => {
         const { container } = render(<Main />)
         expect(container.firstChild).toMatchInlineSnapshot(`
       <main>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu libero in ligula luctus rutrum eget a dui. Nullam tempor massa eu neque viverra, quis congue orci gravida. Maecenas id ex augue. Morbi consequat suscipit lectus, vitae aliquet nunc scelerisque eget. Sed ultricies, felis sed vehicula interdum, metus ipsum porttitor purus, a hendrerit arcu lacus sit amet ante. Sed sed orci ligula. Maecenas nibh tellus, porta a nisi a, dapibus tincidunt risus. Pellentesque et ipsum a nunc gravida aliquam a id nisl.
+          Lorem ipsum dolor sit amet, 
+          <a
+            href="/"
+          >
+            consectetur
+          </a>
+           adipiscing elit. Donec eu libero in ligula luctus rutrum eget a dui. Nullam tempor massa eu neque viverra, quis congue orci gravida. Maecenas id ex augue. Morbi consequat suscipit lectus, vitae aliquet nunc scelerisque eget. Sed ultricies, felis sed vehicula interdum, metus ipsum porttitor purus, a hendrerit arcu lacus sit amet ante. Sed sed orci ligula. Maecenas nibh tellus, porta a nisi a, dapibus tincidunt risus. Pellentesque et ipsum a nunc gravida aliquam a id nisl.
         </p>
         <p>
           Etiam pulvinar, augue non semper commodo, urna neque egestas augue, eu ultricies magna sem et nisi. Pellentesque tempus ullamcorper elit vel blandit. Nunc vel bibendum sem. Quisque commodo diam vitae fringilla ornare. Nunc suscipit, sem a elementum venenatis, ligula massa scelerisque nulla, id hendrerit dui massa maximus leo. Proin mattis quis nisl a mollis. Phasellus sed ante id est tincidunt faucibus et eu eros. Quisque at egestas dolor. Proin tempus tincidunt neque non mollis. Suspendisse orci felis, condimentum a dignissim vitae, consectetur sit amet lorem. Curabitur congue, erat maximus blandit fermentum, ipsum elit sagittis quam, in auctor velit ipsum ac nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec tincidunt blandit purus ut gravida. Vestibulum sit amet dui vitae sapien ornare lacinia et venenatis justo. Morbi libero magna, ornare id convallis vel, faucibus quis nunc.

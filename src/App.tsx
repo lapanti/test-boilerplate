@@ -1,8 +1,8 @@
 import { styled } from '@linaria/react'
 import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Header from './app/Header'
-import Main from './app/Main'
+import FrontPage from './app/FrontPage'
 import globals from './styles/globals'
 
 const Page = styled.div`
@@ -29,8 +29,11 @@ const Page = styled.div`
 
 const App: React.FunctionComponent = () => (
     <Page className={globals}>
-        <Header />
-        <Main />
+        <BrowserRouter>
+            <Switch>
+                <Route component={FrontPage} path="/" exact />
+            </Switch>
+        </BrowserRouter>
     </Page>
 )
 

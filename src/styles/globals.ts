@@ -2,28 +2,30 @@ import { css } from '@linaria/core'
 
 const globals = css`
     :global() {
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Ubuntu:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
         html {
-            --hue: 0; /* Yellow */
-            --accent-hue: 40; /* Orange */
+            --hue: 180; /* Light blue */
+            --accent-hue: 39; /* Orange */
+            --blue-hue: 221;
+            --cyan-hue: 197;
 
-            --tcn-lightness: 88%;
-            --tch-lightness: 45%;
+            --tcn-lightness: 97%;
+            --tch-lightness: 71%;
 
-            --lc-lightness: 70%;
+            --lc-lightness: 77%;
             --ac-lightness: 70%;
             --ec-lightness: 50;
 
             --bb-lightness: 43%;
 
-            --bp-lightness: 12%;
+            --bp-lightness: 13%;
             --bs-lightness: 16%;
 
             @media screen and (prefers-color-scheme: light) {
-                --tcn-lightness: 12%;
-                --tch-lightness: 55%;
+                --tcn-lightness: 3%;
+                --tch-lightness: 29%;
 
-                --lc-lightness: 30%;
+                --lc-lightness: 23%;
                 --ac-lightness: 30%;
                 --ec-lightness: 50;
 
@@ -33,10 +35,11 @@ const globals = css`
                 --bs-lightness: 84%;
             }
 
-            --text-color-normal: hsl(var(--hue), 10%, var(--tcn-lightness));
-            --text-color-highlight: hsl(var(--accent-hue), 70%, var(--tch-lightness));
+            --text-color-normal: hsl(var(--hue), 100%, var(--tcn-lightness));
+            --text-color-highlight: hsl(var(--accent-hue), 100%, var(--tch-lightness));
 
-            --link-color: hsl(var(--hue), 90%, var(--lc-lightness));
+            --link-color: hsl(var(--cyan-hue), 100%, var(--lc-lightness));
+            --link-hover-color: hsl(var(--blue-hue), 100%, var(--lc-lightness));
             --accent-color: hsl(var(--accent-hue), 100%, var(--ac-lightness));
             --error-color: rgb(240, 50, var(--ec-lightness));
 
@@ -51,22 +54,14 @@ const globals = css`
             --xl: 2rem;
             --xxl: 4rem;
 
+            box-sizing: border-box;
             color: var(--text-color-normal);
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Fira Code', sans-serif;
             font-size: 16px;
         }
 
         body {
             margin: 0;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: 'Ubuntu', sans-serif;
         }
     }
 `
