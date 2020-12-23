@@ -1,12 +1,25 @@
-import { styled } from '@linaria/react'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { css } from '@linaria/core'
+import React from 'react'
+import { Link as ReactRouterLink, LinkProps as ReactRouterLinkProps } from 'react-router-dom'
 
-const Link = styled(ReactRouterLink)`
+const styles = css`
     color: var(--link-color);
 
     :hover {
         color: var(--link-hover-color);
     }
 `
+
+type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> | ReactRouterLinkProps
+
+const isAnchorProps = (props: LinkProps): props is React.AnchorHTMLAttributes<HTMLAnchorElement> => 'href' in props
+const isReactRouterLinkProps = (props: LinkProps): props is ReactRouterLinkProps => 'to' in props
+
+const Link: React.FunctionComponent<LinkProps> = (props) =>
+    isAnchorProps(props) ? (
+        <a {...props} className={styles} />
+    ) : isReactRouterLinkProps(props) ? (
+        <ReactRouterLink {...props} className={styles} />
+    ) : null
 
 export default Link
