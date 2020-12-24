@@ -17,7 +17,7 @@ const isReactRouterLinkProps = (props: LinkProps): props is ReactRouterLinkProps
 
 const Link: React.FunctionComponent<LinkProps> = (props) =>
     isAnchorProps(props) ? (
-        <a {...props} className={styles} />
+        <a {...props} className={styles} target="_blank" />
     ) : isReactRouterLinkProps(props) ? (
         <ReactRouterLink {...props} className={styles} />
     ) : null

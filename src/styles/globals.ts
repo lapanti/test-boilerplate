@@ -14,12 +14,8 @@ const globals = css`
 
             --lc-lightness: 77%;
             --ac-lightness: 70%;
-            --ec-lightness: 50;
-
-            --bb-lightness: 43%;
 
             --bp-lightness: 13%;
-            --bs-lightness: 16%;
 
             @media screen and (prefers-color-scheme: light) {
                 --tcn-lightness: 3%;
@@ -27,12 +23,8 @@ const globals = css`
 
                 --lc-lightness: 23%;
                 --ac-lightness: 30%;
-                --ec-lightness: 50;
-
-                --bb-lightness: 57%;
 
                 --bp-lightness: 88%;
-                --bs-lightness: 84%;
             }
 
             --text-color-normal: hsl(var(--hue), 100%, var(--tcn-lightness));
@@ -41,14 +33,12 @@ const globals = css`
             --link-color: hsl(var(--cyan-hue), 100%, var(--lc-lightness));
             --link-hover-color: hsl(var(--blue-hue), 100%, var(--lc-lightness));
             --accent-color: hsl(var(--accent-hue), 100%, var(--ac-lightness));
-            --error-color: rgb(240, 50, var(--ec-lightness));
-
-            --button-background: hsl(var(--hue), 63%, var(--bb-lightness));
-            --button-text-color: black;
 
             --background-primary: hsl(var(--hue), 0%, var(--bp-lightness));
-            --background-secondary: hsl(var(--hue), 0%, var(--bs-lightness));
 
+            --xxs: 0.25rem;
+            --xs: 0.5rem;
+            --s: 0.75rem;
             --m: 1rem;
             --l: 1.5rem;
             --xl: 2rem;
@@ -62,6 +52,10 @@ const globals = css`
 
         body {
             margin: 0;
+        }
+
+        p {
+            margin: var(--m) 0;
         }
     }
 `
