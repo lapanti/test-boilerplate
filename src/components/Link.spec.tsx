@@ -1,13 +1,8 @@
-import { collect } from '@linaria/server'
 import { render, screen } from '@testing-library/react'
-import * as fs from 'fs'
-import * as path from 'path'
 import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 
 import Link from './Link'
-
-const css = fs.readFileSync(path.resolve('./.linaria-cache/src/components/Link.linaria.css'), 'utf8')
 
 describe('<Link />', () => {
     it('should return null if no href or to', () => {
@@ -15,29 +10,50 @@ describe('<Link />', () => {
         expect(container.firstChild).toBeNull()
     })
 
-    describe('as an external link', () => {
+    describe('as an internal navlink', () => {
         it('should render correctly', () => {
-            const href = 'https://lapanti.github.io'
-            const name = 'a link'
-            const { container } = render(<Link href={href}>{name}</Link>)
-            expect(screen.getByRole('link', { name })).toHaveAttribute('href', href)
+            const acn = 'active'
+
+            const activeTo = '/'
+            const activeName = 'an active link'
+            const inactiveTo = '/test'
+            const inactiveName = 'an inactive link'
+            const { container } = render(
+                <MemoryRouter initialEntries={[{ pathname: '/' }]}>
+                    <Link activeClassName={acn} to={activeTo}>
+                        {activeName}
+                    </Link>
+                    <Link activeClassName={acn} to={inactiveTo}>
+                        {inactiveName}
+                    </Link>
+                </MemoryRouter>
+            )
+
+            const activeLink = screen.getByRole('link', { name: activeName })
+            expect(activeLink).toHaveAttribute('href', activeTo)
+            expect(activeLink.className).toContain(acn)
+
+            const inactiveLink = screen.getByRole('link', { name: inactiveName })
+            expect(inactiveLink).toHaveAttribute('href', inactiveTo)
+            expect(inactiveLink.className).not.toContain(acn)
+
             expect(container.firstChild).toMatchInlineSnapshot(`
+        .c0 {
+          color: var(--link-color);
+        }
+
+        .c0:hover {
+          color: var(--link-hover-color);
+        }
+
         <a
-          class="s1dl0hk9"
-          href="https://lapanti.github.io"
-          target="_blank"
+          aria-current="page"
+          class="c0 active"
+          href="/"
         >
-          a link
+          an active link
         </a>
       `)
-        })
-
-        it('should match styles', () => {
-            const { container } = render(<Link href="https://lapanti.github.io">a link</Link>)
-            const { critical } = collect(container.innerHTML, css)
-            expect(critical).toMatchInlineSnapshot(
-                '".s1dl0hk9{color:var(--link-color);}.s1dl0hk9:hover{color:var(--link-hover-color);}"'
-            )
         })
     })
 
@@ -52,25 +68,47 @@ describe('<Link />', () => {
             )
             expect(screen.getByRole('link', { name })).toHaveAttribute('href', to)
             expect(container.firstChild).toMatchInlineSnapshot(`
+        .c0 {
+          color: var(--link-color);
+        }
+
+        .c0:hover {
+          color: var(--link-hover-color);
+        }
+
         <a
-          class="s1dl0hk9"
+          class="c0"
           href="/"
         >
           a link
         </a>
       `)
         })
+    })
 
-        it('should match styles', () => {
-            const { container } = render(
-                <MemoryRouter>
-                    <Link to="/">a link</Link>
-                </MemoryRouter>
-            )
-            const { critical } = collect(container.innerHTML, css)
-            expect(critical).toMatchInlineSnapshot(
-                '".s1dl0hk9{color:var(--link-color);}.s1dl0hk9:hover{color:var(--link-hover-color);}"'
-            )
+    describe('as an external link', () => {
+        it('should render correctly', () => {
+            const href = 'https://lapanti.github.io'
+            const name = 'a link'
+            const { container } = render(<Link href={href}>{name}</Link>)
+            expect(screen.getByRole('link', { name })).toHaveAttribute('href', href)
+            expect(container.firstChild).toMatchInlineSnapshot(`
+        .c0 {
+          color: var(--link-color);
+        }
+
+        .c0:hover {
+          color: var(--link-hover-color);
+        }
+
+        <a
+          class="c0"
+          href="https://lapanti.github.io"
+          target="_blank"
+        >
+          a link
+        </a>
+      `)
         })
     })
 })

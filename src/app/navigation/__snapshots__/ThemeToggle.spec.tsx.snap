@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ThemeToggle /> should render correctly (dark mode) 1`] = `
+.c0 {
+  justify-self: end;
+  padding: 0 var(--m);
+}
+
+.c1 {
+  --border-radius: calc(var(--l) / 2);
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.c2 {
+  display: none;
+}
+
+.c3 {
+  position: relative;
+  width: calc(var(--xl) + var(--xs));
+  height: var(--xm);
+  border-radius: var(--border-radius);
+  background: var(--background-secondary);
+  -webkit-transition: background 0.25s ease;
+  transition: background 0.25s ease;
+}
+
+.c4 {
+  position: absolute;
+  font-size: 14px;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.c5 {
+  position: absolute;
+  font-size: 14px;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.c6 {
+  left: calc(var(--m) + var(--xs));
+}
+
+.c7 {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  background: white;
+  height: var(--xm);
+  width: var(--xm);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  border-radius: var(--border-radius);
+  border: 0;
+  padding: 0;
+  -webkit-transition: -webkit-transform 0.25s ease;
+  -webkit-transition: transform 0.25s ease;
+  transition: transform 0.25s ease;
+  -webkit-transform: translateX(calc(var(--m) + var(--xs)));
+  -ms-transform: translateX(calc(var(--m) + var(--xs)));
+  transform: translateX(calc(var(--m) + var(--xs)));
+}
+
+<form
+  class="c0"
+>
+  <label
+    class="c1"
+  >
+    <input
+      checked=""
+      class="c2"
+      type="checkbox"
+    />
+    <div
+      class="c3"
+    >
+      <span
+        class="c4"
+      >
+        🌙
+      </span>
+      <span
+        class="c5 c6"
+      >
+        ☀️
+      </span>
+    </div>
+    <button
+      aria-checked="true"
+      aria-label="Toggle dark/light mode"
+      class="c7"
+      role="switch"
+      type="button"
+    />
+  </label>
+</form>
+`;
+
+exports[`<ThemeToggle /> should render correctly (light mode) 1`] = `
+.c0 {
+  justify-self: end;
+  padding: 0 var(--m);
+}
+
+.c1 {
+  --border-radius: calc(var(--l) / 2);
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.c2 {
+  display: none;
+}
+
+.c3 {
+  position: relative;
+  width: calc(var(--xl) + var(--xs));
+  height: var(--xm);
+  border-radius: var(--border-radius);
+  background: var(--background-secondary);
+  -webkit-transition: background 0.25s ease;
+  transition: background 0.25s ease;
+}
+
+.c4 {
+  position: absolute;
+  font-size: 14px;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.c5 {
+  position: absolute;
+  font-size: 14px;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease;
+}
+
+.c6 {
+  left: calc(var(--m) + var(--xs));
+}
+
+.c7 {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  background: white;
+  height: var(--xm);
+  width: var(--xm);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  border-radius: var(--border-radius);
+  border: 0;
+  padding: 0;
+  -webkit-transition: -webkit-transform 0.25s ease;
+  -webkit-transition: transform 0.25s ease;
+  transition: transform 0.25s ease;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+}
+
+<form
+  class="c0"
+>
+  <label
+    class="c1"
+  >
+    <input
+      class="c2"
+      type="checkbox"
+    />
+    <div
+      class="c3"
+    >
+      <span
+        class="c4"
+      >
+        🌙
+      </span>
+      <span
+        class="c5 c6"
+      >
+        ☀️
+      </span>
+    </div>
+    <button
+      aria-checked="false"
+      aria-label="Toggle dark/light mode"
+      class="c7"
+      role="switch"
+      type="button"
+    />
+  </label>
+</form>
+`;

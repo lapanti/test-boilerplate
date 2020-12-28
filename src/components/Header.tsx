@@ -1,7 +1,8 @@
-import { styled } from '@linaria/react'
 import React from 'react'
+import styled from 'styled-components'
 
 const StyledHeader = styled.header`
+    grid-area: header;
     color: var(--accent-color);
     display: flex;
     flex-direction: column;

@@ -337,9 +337,6 @@ module.exports = function (webpackEnv) {
                                         cacheCompression: false,
                                         compact: isEnvProduction,
                                     }
-                                },
-                                {
-                                    loader: require.resolve('@linaria/webpack-loader'),
                                 }
                             ]
                         },

@@ -1,43 +1,73 @@
-import { collect } from '@linaria/server'
-import { render } from '@testing-library/react'
-import * as fs from 'fs'
-import * as path from 'path'
+import { render, screen } from '@testing-library/react'
 import React from 'react'
+import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
 
 import App from './App'
+import store from './store/store'
 
-jest.mock('./app/FrontPage', () => () => <span>frontPage</span>)
+const frontPage = 'frontPage'
+const navigation = 'navigation'
 
-const css = fs.readFileSync(path.resolve('./.linaria-cache/src/App.linaria.css'), 'utf8')
+jest.mock('./lib/preference', () => ({ prefersDarkMode: jest.fn().mockReturnValue(true) }))
+jest.mock('./app/Navigation', () => () => <span>{navigation}</span>)
+jest.mock('./app/FrontPage', () => () => <span>{frontPage}</span>)
 
 describe('<App />', () => {
     it('should render FrontPage on base path', () => {
         const { container } = render(
-            <MemoryRouter initialEntries={[{ pathname: '/' }]}>
-                <App />
-            </MemoryRouter>
+            <Provider store={store}>
+                <MemoryRouter initialEntries={[{ pathname: '/' }]}>
+                    <App />
+                </MemoryRouter>
+            </Provider>
         )
+        expect(screen.getByText(navigation)).toBeInTheDocument()
+        expect(screen.getByText(frontPage)).toBeInTheDocument()
         expect(container.firstChild).toMatchInlineSnapshot(`
-      <div
-        class="g8stnzc puwg8pj"
-      >
-        <span>
-          frontPage
-        </span>
-      </div>
-    `)
-    })
+            .c0 {
+              background-color: var(--background-primary);
+              display: grid;
+              grid-template-rows: auto 1fr;
+              grid-template-areas: 'navigation' 'content';
+              height: 100vh;
+            }
 
-    it('should render correct styles', () => {
-        const { container } = render(
-            <MemoryRouter>
-                <App />
-            </MemoryRouter>
-        )
-        const { critical } = collect(container.innerHTML, css)
-        expect(critical).toMatchInlineSnapshot(
-            '".puwg8pj{background-color:var(--background-primary);display:grid;grid-template-columns: 1fr min(65ch,calc(100% - var(--xxl))) 1fr;grid-column-gap:var(--xl);}@media (min-width:660px){.puwg8pj{grid-template-columns: 1fr min(65ch,100%) 1fr;grid-column-gap:normal;}}.puwg8pj > *{grid-column:2;}"'
-        )
+            .c1 {
+              grid-area: content;
+              display: grid;
+              grid-template-columns: 1fr min(65ch,calc(100% - var(--xxl))) 1fr;
+              grid-column-gap: var(--xl);
+              grid-template-rows: auto 1fr;
+              grid-template-areas: 'header' 'main';
+              overflow: auto;
+            }
+
+            .c1 > * {
+              grid-column: 2;
+            }
+
+            @media (min-width:660px) {
+              .c1 {
+                grid-template-columns: 1fr min(65ch,100%) 1fr;
+                grid-column-gap: normal;
+              }
+            }
+
+            <div
+              class="c0"
+            >
+              <span>
+                navigation
+              </span>
+              <article
+                class="c1"
+              >
+                <span>
+                  frontPage
+                </span>
+              </article>
+            </div>
+        `)
     })
 })

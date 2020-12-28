@@ -9,6 +9,7 @@ jest.mock('react-dom', () => ({
         render: mockRender,
     },
 }))
+jest.mock('./lib/preference', () => ({ prefersDarkMode: jest.fn().mockReturnValue(true) }))
 
 describe('index', () => {
     const mockGetElementById = jest.fn()
@@ -17,14 +18,26 @@ describe('index', () => {
         await import('./index')
         expect(mockGetElementById).toHaveBeenCalledWith('root')
         expect(mockRender.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          <UNDEFINED>
-            <App />
-          </UNDEFINED>,
-          undefined,
-        ],
-      ]
-    `)
+            Array [
+              Array [
+                <UNDEFINED>
+                  <Provider
+                    store={
+                      Object {
+                        "dispatch": [Function],
+                        "getState": [Function],
+                        "replaceReducer": [Function],
+                        "subscribe": [Function],
+                        Symbol(observable): [Function],
+                      }
+                    }
+                  >
+                    <App />
+                  </Provider>
+                </UNDEFINED>,
+                undefined,
+              ],
+            ]
+        `)
     })
 })

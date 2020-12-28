@@ -18,9 +18,6 @@ jobs:
             - name: Install
               run: npm ci
 
-            - name: Build # Unfortunately, current way of testing Linaria styles required building first
-              run: npm run build
-
             - name: Test
               run: npm test
 

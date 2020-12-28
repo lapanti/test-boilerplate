@@ -35,12 +35,49 @@ describe('<FrontPage />', () => {
             </MemoryRouter>
         )
         expect(container).toMatchInlineSnapshot(`
+      .c0 {
+        grid-area: header;
+        color: var(--accent-color);
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -webkit-justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding: var(--l) 0;
+      }
+
+      .c1 {
+        margin: 0;
+      }
+
+      .c3 {
+        color: var(--link-color);
+      }
+
+      .c3:hover {
+        color: var(--link-hover-color);
+      }
+
+      .c2 {
+        grid-area: main;
+      }
+
       <div>
         <header
-          class="swue83p"
+          class="c0"
         >
           <h1
-            class="hfrfs33"
+            class="c1"
           >
             Lauri Lavanti
           </h1>
@@ -49,7 +86,7 @@ describe('<FrontPage />', () => {
           </p>
         </header>
         <main
-          class="m9ku3w5"
+          class="c2"
         >
           <p>
             Hello World!
@@ -57,7 +94,7 @@ describe('<FrontPage />', () => {
           <p>
             I am a developer with 
             <a
-              class="s1dl0hk9"
+              class="c3"
               href="/cv"
             >
               some experience
@@ -68,7 +105,7 @@ describe('<FrontPage />', () => {
             My main stack (for now) is with TypeScript, React, redux and all things that go with them. For styling I mainly use styled-components or other libraries with similar syntax. For now, I've found that
              
             <a
-              class="s1dl0hk9"
+              class="c3"
               href="https://hackernoon.com/fractal-a-react-app-structure-for-infinite-scale-4dab943092af"
               target="_blank"
             >
@@ -78,7 +115,7 @@ describe('<FrontPage />', () => {
             is the only way to keep a large project logical. As an example, you can look at the
              
             <a
-              class="s1dl0hk9"
+              class="c3"
               href="https://github.com/lapanti/lapanti.github.io"
               target="_blank"
             >
@@ -87,10 +124,10 @@ describe('<FrontPage />', () => {
             , to see what I'm talking about.
           </p>
           <p>
-            I am currently happily employed, but because you still maybe want to see them, here's my
+            I am currently happily employed, but if you still want to check them out, here's my
              
             <a
-              class="s1dl0hk9"
+              class="c3"
               href="https://github.com/lapanti"
               target="_blank"
             >
@@ -99,7 +136,7 @@ describe('<FrontPage />', () => {
              and
              
             <a
-              class="s1dl0hk9"
+              class="c3"
               href="https://www.linkedin.com/in/lapanti/"
               target="_blank"
             >
@@ -108,7 +145,7 @@ describe('<FrontPage />', () => {
             . I also have a
              
             <a
-              class="s1dl0hk9"
+              class="c3"
               href="https://twitter.com/laurilavanti"
               target="_blank"
             >

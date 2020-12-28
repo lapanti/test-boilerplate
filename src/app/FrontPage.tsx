@@ -24,7 +24,7 @@ const FrontPage: React.FunctionComponent = () => (
                 talking about.
             </p>
             <p>
-                I am currently happily employed, but because you still maybe want to see them, here&apos;s my{' '}
+                I am currently happily employed, but if you still want to check them out, here&apos;s my{' '}
                 <Link href="https://github.com/lapanti">Github</Link> and{' '}
                 <Link href="https://www.linkedin.com/in/lapanti/">LinkedIn</Link>. I also have a{' '}
                 <Link href="https://twitter.com/laurilavanti">Twitter</Link>
