@@ -33,6 +33,7 @@ const GlobalStyle = createGlobalStyle<{ isDarkMode: boolean }>`
 
             --text-color-normal: hsl(var(--hue), 100%, var(--tcn-lightness));
             --text-color-highlight: hsl(var(--accent-hue), 100%, var(--tch-lightness));
+            --text-color-darker: hsla(var(--hue), 100%, var(--tcn-lightness), 50%);
 
             --link-color: hsl(var(--cyan-hue), 100%, var(--lc-lightness));
             --link-hover-color: hsl(var(--blue-hue), 100%, var(--lc-lightness));

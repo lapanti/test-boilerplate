@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import Link from '../components/Link'
 import Main from '../components/Main'
 
-const FrontPage: React.FunctionComponent = () => (
+const Whoami: React.FunctionComponent = () => (
     <>
         <Header subtitle="whoami" title="Lauri Lavanti" />
         <Main>
@@ -38,4 +38,4 @@ const FrontPage: React.FunctionComponent = () => (
     </>
 )
 
-export default FrontPage
+export default Whoami
