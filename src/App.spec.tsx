@@ -8,6 +8,7 @@ import store from './store/store'
 
 const navigation = 'navigation'
 const whoami = 'whoami'
+const cv = 'cv'
 const setup = 'setup'
 
 jest.mock('react-router-dom', () => ({
@@ -17,6 +18,7 @@ jest.mock('react-router-dom', () => ({
 jest.mock('./lib/preference', () => ({ prefersDarkMode: jest.fn().mockReturnValue(true) }))
 jest.mock('./app/Navigation', () => () => <span>{navigation}</span>)
 jest.mock('./app/Whoami', () => () => <span>{whoami}</span>)
+jest.mock('./app/CV', () => () => <span>{cv}</span>)
 jest.mock('./app/Setup', () => () => <span>{setup}</span>)
 
 describe('<App />', () => {
@@ -30,6 +32,7 @@ describe('<App />', () => {
         )
         expect(screen.getByText(navigation)).toBeInTheDocument()
         expect(screen.getByText(whoami)).toBeInTheDocument()
+        expect(screen.queryByText(cv)).not.toBeInTheDocument()
         expect(screen.queryByText(setup)).not.toBeInTheDocument()
         expect(container.firstChild).toMatchInlineSnapshot(`
             .c0 {
@@ -67,6 +70,54 @@ describe('<App />', () => {
         `)
     })
 
+    it('should render cv on /cv', () => {
+        const { container } = render(
+            <Provider store={store}>
+                <MemoryRouter initialEntries={[{ pathname: '/cv' }]}>
+                    <App />
+                </MemoryRouter>
+            </Provider>
+        )
+        expect(screen.getByText(navigation)).toBeInTheDocument()
+        expect(screen.queryByText(whoami)).not.toBeInTheDocument()
+        expect(screen.getByText(cv)).toBeInTheDocument()
+        expect(screen.queryByText(setup)).not.toBeInTheDocument()
+        expect(container.firstChild).toMatchInlineSnapshot(`
+            .c0 {
+              background-color: var(--background-primary);
+              display: grid;
+              grid-template-rows: auto 1fr;
+              grid-template-areas: 'navigation' 'content';
+              height: 100vh;
+            }
+
+            .c1 {
+              grid-area: content;
+              display: grid;
+              grid-template-rows: auto 1fr;
+              grid-template-areas: 'header' 'main';
+              overflow: auto;
+            }
+
+            <div>
+              <div
+                class="c0"
+              >
+                <span>
+                  navigation
+                </span>
+                <article
+                  class="c1"
+                >
+                  <span>
+                    cv
+                  </span>
+                </article>
+              </div>
+            </div>
+        `)
+    })
+
     it('should render setup on /setup', () => {
         const { container } = render(
             <Provider store={store}>
@@ -77,6 +128,7 @@ describe('<App />', () => {
         )
         expect(screen.getByText(navigation)).toBeInTheDocument()
         expect(screen.queryByText(whoami)).not.toBeInTheDocument()
+        expect(screen.queryByText(cv)).not.toBeInTheDocument()
         expect(screen.getByText(setup)).toBeInTheDocument()
         expect(container.firstChild).toMatchInlineSnapshot(`
             .c0 {

@@ -1,4 +1,5 @@
 import { prefersDarkMode } from '../../../lib/preference'
+import { mockState } from '../../store'
 import { isDarkModeSelector } from './selectors'
 import themeSlice, { initialState } from './slice'
 
@@ -43,7 +44,7 @@ describe('theme', () => {
         describe('toggleDarkMode', () => {
             it('should toggle it on (when off)', () => {
                 const theme = themeSlice.reducer({ darkMode: false }, themeSlice.actions.toggleDarkMode())
-                expect(isDarkModeSelector({ theme })).toBeTruthy()
+                expect(isDarkModeSelector(mockState({ theme }))).toBeTruthy()
                 expect(theme).toMatchInlineSnapshot(`
                               Object {
                                 "darkMode": true,
@@ -53,7 +54,7 @@ describe('theme', () => {
 
             it('should toggle it off (when on)', () => {
                 const theme = themeSlice.reducer({ darkMode: true }, themeSlice.actions.toggleDarkMode())
-                expect(isDarkModeSelector({ theme })).toBeFalsy()
+                expect(isDarkModeSelector(mockState({ theme }))).toBeFalsy()
                 expect(theme).toMatchInlineSnapshot(`
                               Object {
                                 "darkMode": false,

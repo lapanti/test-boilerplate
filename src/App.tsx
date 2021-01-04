@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 
+import CV from './app/CV'
 import Navigation from './app/Navigation'
 import Setup from './app/Setup'
 import Whoami from './app/Whoami'
@@ -38,6 +39,7 @@ const App: React.FunctionComponent = () => {
                 <Content>
                     <Switch>
                         <Route component={Whoami} {...routesObj.whoami} />
+                        <Route component={CV} {...routesObj.cv} />
                         <Route component={Setup} {...routesObj.setup} />
                     </Switch>
                 </Content>

@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CV /> should match snapshot when status === "" 1`] = `
+.c0 {
+  grid-area: header;
+  color: var(--accent-color);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: var(--l) 0;
+}
+
+.c1 {
+  margin: 0;
+}
+
+.c2 {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr min(65ch,calc(100% - var(--xxl))) 1fr;
+  grid-column-gap: var(--xl);
+  grid-auto-rows: minmax(min-content,max-content);
+}
+
+.c2 > * {
+  grid-column: 2;
+}
+
+@media (min-width:660px) {
+  .c2 {
+    grid-template-columns: 1fr min(65ch,100%) 1fr;
+    grid-column-gap: normal;
+  }
+}
+
+<div>
+  <header
+    class="c0"
+  >
+    <h1
+      class="c1"
+    >
+      CV
+    </h1>
+    <p>
+      what I have done
+    </p>
+  </header>
+  <main
+    class="c2"
+  >
+    <p>
+      I started out as most people, doing websites in my early teens (I'll admit, my first ones were with FrontPage) for my bands etc. I once even borrowed (and did all the exercises) from the library a book that detailed the then popular HTML, PHP, MySQL stack, so a lot of the websites I did back then used PHP on the level of 
+      <code>
+        include
+      </code>
+      . Luckily I outgrew that and started dabbling in jQuery and finally got a formal education as well.
+    </p>
+    <p>
+      That all lead into a (tech) master's degree in Information Networks from Aalto University, where I majored in ICT in business (basically all the software courses I could find). Apart from that I have accumulated some professional experience in the field
+      
+      .
+    </p>
+    <p>
+      Loading...
+    </p>
+  </main>
+</div>
+`;
+
+exports[`<CV /> should match snapshot when status === "done" 1`] = `
+.c0 {
+  grid-area: header;
+  color: var(--accent-color);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: var(--l) 0;
+}
+
+.c1 {
+  margin: 0;
+}
+
+.c2 {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr min(65ch,calc(100% - var(--xxl))) 1fr;
+  grid-column-gap: var(--xl);
+  grid-auto-rows: minmax(min-content,max-content);
+}
+
+.c2 > * {
+  grid-column: 2;
+}
+
+.c3 {
+  list-style-type: none;
+  padding: 0;
+}
+
+@media (min-width:660px) {
+  .c2 {
+    grid-template-columns: 1fr min(65ch,100%) 1fr;
+    grid-column-gap: normal;
+  }
+}
+
+<div>
+  <header
+    class="c0"
+  >
+    <h1
+      class="c1"
+    >
+      CV
+    </h1>
+    <p>
+      what I have done
+    </p>
+  </header>
+  <main
+    class="c2"
+  >
+    <p>
+      I started out as most people, doing websites in my early teens (I'll admit, my first ones were with FrontPage) for my bands etc. I once even borrowed (and did all the exercises) from the library a book that detailed the then popular HTML, PHP, MySQL stack, so a lot of the websites I did back then used PHP on the level of 
+      <code>
+        include
+      </code>
+      . Luckily I outgrew that and started dabbling in jQuery and finally got a formal education as well.
+    </p>
+    <p>
+      That all lead into a (tech) master's degree in Information Networks from Aalto University, where I majored in ICT in business (basically all the software courses I could find). Apart from that I have accumulated some professional experience in the field
+       (1 years and 7 months, to be exactish)
+      .
+    </p>
+    <h2>
+      Technologies
+    </h2>
+    <ul
+      class="c3"
+    >
+      <span>
+        CSS
+         1 4
+         1 7
+      </span>
+      <span>
+        HTML
+         1 3
+         1 7
+      </span>
+    </ul>
+    <h2>
+      Jobs
+    </h2>
+    <span>
+      pulmatonSolutionsOy
+    </span>
+    <span>
+      nokiaSolutionsAndNetworks
+    </span>
+    <h2>
+      Other technologies
+    </h2>
+    <p>
+      I have also used or dabbled with some other technologies, listed below, but I do not consider myself fluent (or willing) to work with them professionally:
+       
+    </p>
+    <ul
+      class="c3"
+    >
+      <li>
+        Docker
+      </li>
+      <li>
+        Java
+      </li>
+      <li>
+        Python
+      </li>
+      <li>
+        PHP
+      </li>
+      <li>
+        MySQL
+      </li>
+      <li>
+        PostgreSQL
+      </li>
+      <li>
+        React Native
+      </li>
+      <li>
+        Android
+      </li>
+      <li>
+        And the list goes on and on
+      </li>
+    </ul>
+  </main>
+</div>
+`;
+
+exports[`<CV /> should match snapshot when status === "loading" 1`] = `
+.c0 {
+  grid-area: header;
+  color: var(--accent-color);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: var(--l) 0;
+}
+
+.c1 {
+  margin: 0;
+}
+
+.c2 {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr min(65ch,calc(100% - var(--xxl))) 1fr;
+  grid-column-gap: var(--xl);
+  grid-auto-rows: minmax(min-content,max-content);
+}
+
+.c2 > * {
+  grid-column: 2;
+}
+
+@media (min-width:660px) {
+  .c2 {
+    grid-template-columns: 1fr min(65ch,100%) 1fr;
+    grid-column-gap: normal;
+  }
+}
+
+<div>
+  <header
+    class="c0"
+  >
+    <h1
+      class="c1"
+    >
+      CV
+    </h1>
+    <p>
+      what I have done
+    </p>
+  </header>
+  <main
+    class="c2"
+  >
+    <p>
+      I started out as most people, doing websites in my early teens (I'll admit, my first ones were with FrontPage) for my bands etc. I once even borrowed (and did all the exercises) from the library a book that detailed the then popular HTML, PHP, MySQL stack, so a lot of the websites I did back then used PHP on the level of 
+      <code>
+        include
+      </code>
+      . Luckily I outgrew that and started dabbling in jQuery and finally got a formal education as well.
+    </p>
+    <p>
+      That all lead into a (tech) master's degree in Information Networks from Aalto University, where I majored in ICT in business (basically all the software courses I could find). Apart from that I have accumulated some professional experience in the field
+      
+      .
+    </p>
+    <p>
+      Loading...
+    </p>
+  </main>
+</div>
+`;

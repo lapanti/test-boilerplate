@@ -66,6 +66,14 @@ const GlobalStyle = createGlobalStyle<{ isDarkMode: boolean }>`
         p {
             margin: var(--m) 0;
         }
+
+        h1 {
+            font-size: var(--l);
+        }
+
+        h2 {
+            font-size: var(--xm);
+        }
 `
 
 export default GlobalStyle

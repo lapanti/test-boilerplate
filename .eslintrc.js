@@ -112,7 +112,6 @@ module.exports = {
     semi: ['error', 'never'],
     'simple-import-sort/exports': ['error'],
     'simple-import-sort/imports': ['error'],
-    'sort-keys': ['error', 'asc'],
   },
   settings: {
     'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },

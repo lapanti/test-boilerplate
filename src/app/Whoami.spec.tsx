@@ -136,7 +136,7 @@ describe('<Whoami />', () => {
                   >
                     code of this page
                   </a>
-                  , to see what I'm talking about.
+                  , to see what I'm talking about. (Usually I am against over-engineering, but this site has been a kind of pet project so I over-engineered the **** out of it)
                 </p>
                 <p>
                   I am currently happily employed, but if you still want to check them out, here's my
