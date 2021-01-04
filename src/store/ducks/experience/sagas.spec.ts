@@ -4,22 +4,15 @@ import { Action } from 'redux'
 import { runSaga } from 'redux-saga'
 
 import { jobsArray, techs } from '../../../constants/jobs'
+import { sumDurations } from '../../../lib/duration'
 import { mockState } from '../../store'
 import { initializeSaga } from './sagas'
+import type { JobWithDuration } from './slice'
 import experienceSlice from './slice'
 
 jest.mock('../../../lib/preference', () => ({
     prefersDarkMode: jest.fn().mockReturnValue(true),
 }))
-
-const createDuration = ({ years, months }: { years?: number | undefined; months?: number | undefined }): Duration => ({
-    years: years || 0,
-    months: months || 0,
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-})
 
 describe('experience sagas', () => {
     jest.useFakeTimers('modern').setSystemTime(1601499600000)
@@ -31,91 +24,105 @@ describe('experience sagas', () => {
                 { dispatch: (action: Action) => dispatched.push(action), getState: () => ({ state: mockState({}) }) },
                 initializeSaga
             ).toPromise()
+            const job0: JobWithDuration = {
+                ...jobsArray[0],
+                duration: intervalToDuration({ start: jobsArray[0].startDate, end: jobsArray[0].endDate! }),
+            }
+            const job1 = {
+                ...jobsArray[1],
+                duration: intervalToDuration({ start: jobsArray[1].startDate, end: jobsArray[1].endDate! }),
+            }
+            const job2 = {
+                ...jobsArray[2],
+                duration: intervalToDuration({ start: jobsArray[2].startDate, end: jobsArray[2].endDate! }),
+            }
+            const job3 = {
+                ...jobsArray[3],
+                duration: intervalToDuration({ start: jobsArray[3].startDate, end: jobsArray[3].endDate! }),
+            }
+            const job4 = {
+                ...jobsArray[4],
+                duration: intervalToDuration({ start: jobsArray[4].startDate, end: jobsArray[4].endDate! }),
+            }
+            const job5 = {
+                ...jobsArray[5],
+                duration: intervalToDuration({ start: jobsArray[5].startDate, end: Date.now() }),
+            }
+            const totalDuration = sumDurations(
+                job0.duration,
+                job1.duration,
+                job2.duration,
+                job3.duration,
+                job4.duration,
+                job5.duration
+            )
             expect(dispatched).toEqual([
                 experienceSlice.actions.setJob({
                     key: jobsArray[0].id,
-                    job: {
-                        ...jobsArray[0],
-                        duration: intervalToDuration({ start: jobsArray[0].startDate, end: jobsArray[0].endDate! }),
-                    },
+                    job: job0,
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[1].id,
-                    job: {
-                        ...jobsArray[1],
-                        duration: intervalToDuration({ start: jobsArray[1].startDate, end: jobsArray[1].endDate! }),
-                    },
+                    job: job1,
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[2].id,
-                    job: {
-                        ...jobsArray[2],
-                        duration: intervalToDuration({ start: jobsArray[2].startDate, end: jobsArray[2].endDate! }),
-                    },
+                    job: job2,
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[3].id,
-                    job: {
-                        ...jobsArray[3],
-                        duration: intervalToDuration({ start: jobsArray[3].startDate, end: jobsArray[3].endDate! }),
-                    },
+                    job: job3,
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[4].id,
-                    job: {
-                        ...jobsArray[4],
-                        duration: intervalToDuration({ start: jobsArray[4].startDate, end: jobsArray[4].endDate! }),
-                    },
+                    job: job4,
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[5].id,
-                    job: {
-                        ...jobsArray[5],
-                        duration: intervalToDuration({ start: jobsArray[5].startDate, end: Date.now() }),
-                    },
+                    job: job5,
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.JavaScript,
-                    value: createDuration({ years: 5, months: 11 }),
+                    value: totalDuration,
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.HTML,
-                    value: createDuration({ years: 5, months: 11 }),
+                    value: totalDuration,
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.CSS,
-                    value: createDuration({ years: 5, months: 11 }),
+                    value: totalDuration,
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs['Node.js'],
-                    value: createDuration({ years: 5, months: 4 }),
+                    value: sumDurations(job2.duration, job3.duration, job4.duration, job5.duration),
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.React,
-                    value: createDuration({ years: 5, months: 4 }),
+                    value: sumDurations(job2.duration, job3.duration, job4.duration, job5.duration),
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.redux,
-                    value: createDuration({ years: 5, months: 4 }),
+                    value: sumDurations(job2.duration, job3.duration, job4.duration, job5.duration),
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs['redux-observable'],
-                    value: createDuration({ years: 2, months: 7 }),
+                    value: sumDurations(job2.duration, job3.duration),
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.Scala,
-                    value: createDuration({ years: 1, months: 9 }),
+                    value: job2.duration,
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.TypeScript,
-                    value: createDuration({ years: 3, months: 7 }),
+                    value: sumDurations(job3.duration, job4.duration, job5.duration),
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs['redux-saga'],
-                    value: createDuration({ years: 2, months: 9 }),
+                    value: sumDurations(job4.duration, job5.duration),
                 }),
                 experienceSlice.actions.setTotalExperience({
-                    totalExperience: createDuration({ years: 5, months: 11 }),
+                    totalExperience: totalDuration,
                 }),
                 experienceSlice.actions.initializeDone(),
             ])

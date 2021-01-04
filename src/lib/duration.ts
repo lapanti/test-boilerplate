@@ -6,7 +6,7 @@ const hoursInDay = 24
 const daysInMonth = 31
 const monthsInYear = 12
 
-export const sumDurations = (duration1: Duration, duration2?: Duration): Duration => {
+const sumTwoDurations = (duration1: Duration, duration2?: Duration): Duration => {
     const secondsTemp = (duration1.seconds || 0) + (duration2?.seconds || 0)
     const seconds = secondsTemp % secondsInMinute
     const minutesTemp = (duration1.minutes || 0) + (duration2?.minutes || 0) + (secondsTemp - seconds) / secondsInMinute
@@ -27,6 +27,16 @@ export const sumDurations = (duration1: Duration, duration2?: Duration): Duratio
         seconds,
     }
 }
+
+export const sumDurations = (...durations: (Duration | undefined)[]): Duration =>
+    durations.reduce<Duration>((acc, curr) => sumTwoDurations(acc, curr), {
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    })
 
 const durationToSeconds = (duration: Duration): number =>
     (((((duration?.years || 0) * monthsInYear + (duration?.months || 0)) * daysInMonth + (duration?.days || 0)) *
