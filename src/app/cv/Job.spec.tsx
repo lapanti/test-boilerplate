@@ -14,7 +14,7 @@ const job: JobWithDuration = {
     title: 'Title',
     description: 'Description',
     techs: [techs.CSS, techs.HTML],
-    startDate: new Date(2020, 0).valueOf(),
+    startDate: new Date(2020, 0).getTime(),
     duration: { years: 1, months: 1 },
 }
 
@@ -162,7 +162,7 @@ describe('<Job />', () => {
     })
 
     it('should render a job (without an end date)', () => {
-        const job2: JobWithDuration = { ...job, endDate: new Date(2021, 1).valueOf() }
+        const job2: JobWithDuration = { ...job, endDate: new Date(2021, 1).getTime() }
         const { container } = render(<Job job={job2} />)
 
         const definitions = screen.getAllByRole('definition')

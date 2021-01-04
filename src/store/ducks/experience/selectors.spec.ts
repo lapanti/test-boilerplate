@@ -24,7 +24,7 @@ describe('experience selectors', () => {
                 title: 'title1',
                 description: 'description1',
                 techs: [],
-                startDate: new Date(2000, 1).valueOf(),
+                startDate: new Date(2000, 1).getTime(),
                 duration: intervalToDuration({ start: new Date(2000, 1), end: new Date(2000, 2) }),
             }
             const secondJob: JobWithDuration = {
@@ -33,7 +33,7 @@ describe('experience selectors', () => {
                 title: 'title2',
                 description: 'description2',
                 techs: [],
-                startDate: new Date(2010, 1).valueOf(),
+                startDate: new Date(2010, 1).getTime(),
                 duration: intervalToDuration({ start: new Date(2010, 1), end: new Date(2010, 2) }),
             }
             const thirdJob: JobWithDuration = {
@@ -42,7 +42,7 @@ describe('experience selectors', () => {
                 title: 'title3',
                 description: 'description3',
                 techs: [],
-                startDate: new Date(2020, 1).valueOf(),
+                startDate: new Date(2020, 1).getTime(),
                 duration: intervalToDuration({ start: new Date(2020, 1), end: new Date(2020, 2) }),
             }
             expect(
