@@ -38,8 +38,8 @@ export const jobsArray: Job[] = [
         title: 'Seasonal trainee',
         description: 'Programming in Research- & Development environment with Python.',
         techs: [techs.JavaScript, techs.HTML, techs.CSS],
-        startDate: new Date(2013, 4).getTime(),
-        endDate: new Date(2013, 8).getTime(),
+        startDate: 1367355600000, // May 2013
+        endDate: 1377982800000, // September 2013
     },
     {
         id: 'pulmatonSolutionsOy',
@@ -47,8 +47,8 @@ export const jobsArray: Job[] = [
         title: 'Software Developer',
         description: 'Development of a cloud-hosted reporting tool with Java, HTML, JavaScript and CSS.',
         techs: [techs.JavaScript, techs.HTML, techs.CSS],
-        startDate: new Date(2014, 4).getTime(),
-        endDate: new Date(2014, 7).getTime(),
+        startDate: 1398891600000, // May 2014
+        endDate: 1406840400000, // August 2014
     },
     {
         id: 'futurice',
@@ -66,8 +66,8 @@ export const jobsArray: Job[] = [
             techs['redux-observable'],
             techs.Scala,
         ],
-        startDate: new Date(2015, 4).getTime(),
-        endDate: new Date(2017, 1).getTime(),
+        startDate: 1430427600000, // May 2015
+        endDate: 1485900000000, // February 2017
     },
     {
         id: 'zalando',
@@ -85,8 +85,8 @@ export const jobsArray: Job[] = [
             techs.redux,
             techs['redux-observable'],
         ],
-        startDate: new Date(2017, 2).getTime(),
-        endDate: new Date(2018, 0).getTime(),
+        startDate: 1488319200000, // March 2017
+        endDate: 1514757600000, // January 2018
     },
     {
         id: 'goforeSolinorOy',
@@ -104,8 +104,8 @@ export const jobsArray: Job[] = [
             techs.redux,
             techs['redux-saga'],
         ],
-        startDate: new Date(2018, 0).getTime(),
-        endDate: new Date(2019, 9).getTime(),
+        startDate: 1514757600000, // January 2018
+        endDate: 1569877200000, // October 2019
     },
     {
         id: 'verkkokauppaComOyj',
@@ -123,6 +123,6 @@ export const jobsArray: Job[] = [
             techs.redux,
             techs['redux-saga'],
         ],
-        startDate: new Date(2019, 9).getTime(),
+        startDate: 1569877200000, // October 2019
     },
 ]
