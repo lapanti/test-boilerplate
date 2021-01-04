@@ -14,9 +14,6 @@ jobs:
             - name: Install
               run: npm ci
 
-            - name: Build
-              run: npm run build
-
             - name: Configure git
               run: |
                   git config user.email "laurilavanti@gmail.com"
