@@ -41,11 +41,12 @@ describe('experience', () => {
                     experienceSlice.actions.setJob({
                         key: 'nokiaSolutionsAndNetworks',
                         job: {
+                            id: 'nokiaSolutionsAndNetworks',
                             companyName: '',
                             title: '',
                             description: '',
                             techs: [],
-                            startDate: new Date(2000, 1),
+                            startDate: new Date(2000, 1).valueOf(),
                             duration: intervalToDuration({ start: new Date(2000, 1), end: new Date(2010, 1) }),
                         },
                     })
@@ -63,7 +64,8 @@ describe('experience', () => {
                             "seconds": 0,
                             "years": 10,
                           },
-                          "startDate": 2000-01-31T22:00:00.000Z,
+                          "id": "nokiaSolutionsAndNetworks",
+                          "startDate": 949356000000,
                           "techs": Array [],
                           "title": "",
                         },
@@ -144,16 +146,19 @@ describe('experience', () => {
         describe('setJob', () => {
             it('should save correct job', () => {
                 const job: JobWithDuration = {
+                    id: 'futurice',
                     companyName: '',
                     title: '',
                     description: '',
                     techs: [],
-                    startDate: new Date(2000, 1),
+                    startDate: new Date(2000, 1).valueOf(),
                     duration: intervalToDuration({ start: new Date(2000, 0), end: new Date(2000, 1) }),
                 }
-                const key = 'futurice'
-                const experience = experienceSlice.reducer(initialState, experienceSlice.actions.setJob({ key, job }))
-                expect(experience.jobs[key]).toEqual(job)
+                const experience = experienceSlice.reducer(
+                    initialState,
+                    experienceSlice.actions.setJob({ key: job.id, job })
+                )
+                expect(experience.jobs[job.id]).toEqual(job)
                 expect(experience).toMatchInlineSnapshot(`
                     Object {
                       "jobs": Object {
@@ -168,7 +173,8 @@ describe('experience', () => {
                             "seconds": 0,
                             "years": 0,
                           },
-                          "startDate": 2000-01-31T22:00:00.000Z,
+                          "id": "futurice",
+                          "startDate": 949356000000,
                           "techs": Array [],
                           "title": "",
                         },

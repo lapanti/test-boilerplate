@@ -175,7 +175,8 @@ describe('<Job />', () => {
         expect(hasDefinition(job2.techs.join(''))).toBeTruthy()
         expect(
             hasDefinition(
-                `from ${format(job2.startDate, 'M/yyyy', { locale })} until ${format(job2.endDate, 'M/yyyy', {
+                // eslint-disable-next-line
+                `from ${format(job2.startDate, 'M/yyyy', { locale })} until ${format(job2.endDate!, 'M/yyyy', {
                     locale,
                 })} (${durationToString(job2.duration)})`
             )
