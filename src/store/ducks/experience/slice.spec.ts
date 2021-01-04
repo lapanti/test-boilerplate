@@ -46,7 +46,7 @@ describe('experience', () => {
                             title: '',
                             description: '',
                             techs: [],
-                            startDate: new Date(2000, 1).getTime(),
+                            startDate: 949356000000, // February 2000
                             duration: intervalToDuration({ start: new Date(2000, 1), end: new Date(2010, 1) }),
                         },
                     })
@@ -151,7 +151,7 @@ describe('experience', () => {
                     title: '',
                     description: '',
                     techs: [],
-                    startDate: new Date(2000, 1).getTime(),
+                    startDate: 949356000000, // February 2000
                     duration: intervalToDuration({ start: new Date(2000, 0), end: new Date(2000, 1) }),
                 }
                 const experience = experienceSlice.reducer(

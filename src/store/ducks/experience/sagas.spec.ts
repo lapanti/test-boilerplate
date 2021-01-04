@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+import intervalToDuration from 'date-fns/intervalToDuration'
 import { Action } from 'redux'
 import { runSaga } from 'redux-saga'
 
@@ -32,27 +34,45 @@ describe('experience sagas', () => {
             expect(dispatched).toEqual([
                 experienceSlice.actions.setJob({
                     key: jobsArray[0].id,
-                    job: { ...jobsArray[0], duration: createDuration({ months: 4 }) },
+                    job: {
+                        ...jobsArray[0],
+                        duration: intervalToDuration({ start: jobsArray[0].startDate, end: jobsArray[0].endDate! }),
+                    },
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[1].id,
-                    job: { ...jobsArray[1], duration: createDuration({ months: 3 }) },
+                    job: {
+                        ...jobsArray[1],
+                        duration: intervalToDuration({ start: jobsArray[1].startDate, end: jobsArray[1].endDate! }),
+                    },
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[2].id,
-                    job: { ...jobsArray[2], duration: createDuration({ years: 1, months: 9 }) },
+                    job: {
+                        ...jobsArray[2],
+                        duration: intervalToDuration({ start: jobsArray[2].startDate, end: jobsArray[2].endDate! }),
+                    },
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[3].id,
-                    job: { ...jobsArray[3], duration: createDuration({ months: 10 }) },
+                    job: {
+                        ...jobsArray[3],
+                        duration: intervalToDuration({ start: jobsArray[3].startDate, end: jobsArray[3].endDate! }),
+                    },
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[4].id,
-                    job: { ...jobsArray[4], duration: createDuration({ years: 1, months: 9 }) },
+                    job: {
+                        ...jobsArray[4],
+                        duration: intervalToDuration({ start: jobsArray[4].startDate, end: jobsArray[4].endDate! }),
+                    },
                 }),
                 experienceSlice.actions.setJob({
                     key: jobsArray[5].id,
-                    job: { ...jobsArray[5], duration: createDuration({ years: 1 }) },
+                    job: {
+                        ...jobsArray[5],
+                        duration: intervalToDuration({ start: jobsArray[5].startDate, end: Date.now() }),
+                    },
                 }),
                 experienceSlice.actions.setTechExperience({
                     key: techs.JavaScript,
