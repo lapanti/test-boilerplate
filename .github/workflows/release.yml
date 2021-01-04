@@ -1,0 +1,32 @@
+name: Release
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Install
+              run: npm ci
+
+            - name: Build
+              run: npm run build
+
+            - name: Configure git
+              run: |
+                  git config user.email "laurilavanti@gmail.com"
+                  git config user.name "Lauri Lavanti"
+
+            - name: Release
+              run: npm run release
+
+            - name: Push changes
+              uses: ad-m/github-push-action@master
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  branch: ${{ github.ref }}
