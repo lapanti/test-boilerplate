@@ -1,26 +1,68 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - master
+    push:
+        branches:
+            - master
+        paths-ignore:
+            - 'package.json'
+            - 'CHANGELOG.md'
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
 
-      - name: Install
-        run: npm ci
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
 
-      - name: Build
-        run: npm run build
+            - name: Install
+              run: npm ci
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.7.1
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
-          CLEAN: true # Automatically remove deleted files from the deploy branch
+            - name: Build
+              run: npm run build
+
+            - name: Deploy
+              uses: JamesIves/github-pages-deploy-action@3.7.1
+              with:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  BRANCH: gh-pages # The branch the action should deploy to.
+                  FOLDER: build # The folder the action should deploy.
+                  CLEAN: true # Automatically remove deleted files from the deploy branch
+
+    release:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Install
+              run: npm ci
+
+            - name: Configure git
+              run: |
+                  git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git config --local user.name "github-actions[bot]"
+
+            - name: Release
+              run: npm run release
+
+            - name: Push version
+              uses: ad-m/github-push-action@master
+              with:
+                  github_token: ${{ secrets.PAT }}
+                  branch: ${{ github.ref }}
+                  tags: true

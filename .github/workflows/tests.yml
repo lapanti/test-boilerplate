@@ -1,0 +1,111 @@
+name: tests
+
+on: [push, pull_request]
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [10.x, 12.x, 14.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Install
+              run: npm ci
+
+            - name: Lint
+              run: npm run lint
+
+    typecheck:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [10.x, 12.x, 14.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Install
+              run: npm ci
+
+            - name: Typecheck
+              run: npm run typecheck
+
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [10.x, 12.x, 14.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Install
+              run: npm ci
+
+            - name: Test
+              run: npm test
+
+            - name: Report coverage
+              run: bash <(curl -s https://codecov.io/bash) # Upload to Codecov
+              env:
+                  CI: true
+
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [10.x, 12.x, 14.x]
+        steps:
+            - uses: actions/checkout@v2
+            - name: Setup node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Cache node modules
+              uses: actions/cache@v1
+              with:
+                  path: ~/.npm
+                  key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+                  restore-keys: |
+                      ${{ runner.os }}-node-
+
+            - name: Install
+              run: npm ci
+
+            - name: Build
+              run: npm run build
