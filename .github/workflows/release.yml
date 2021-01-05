@@ -4,6 +4,9 @@ on:
     push:
         branches:
             - master
+        paths-ignore:
+            - 'package.json'
+            - 'CHANGELOG.md'
 
 jobs:
     build-and-deploy:
@@ -22,8 +25,8 @@ jobs:
             - name: Release
               run: npm run release
 
+            - name: Set origin
+              run: git remote set-url origin https://lapanti:${{ secrets.PAT }}@github.com/lapanti/lapanti.github.io.git
+
             - name: Push changes
-              uses: ad-m/github-push-action@master
-              with:
-                  github_token: ${{ secrets.PAT }}
-                  branch: ${{ github.ref }}
+              run: git push --follow-tags
