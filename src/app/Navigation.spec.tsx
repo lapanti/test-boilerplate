@@ -34,6 +34,11 @@ describe('<Navigation />', () => {
               display: grid;
               grid-template-columns: repeat(3,auto) 1fr;
               padding: var(--l) var(--m);
+              position: -webkit-sticky;
+              position: sticky;
+              top: 0;
+              background: var(--background-primary);
+              z-index: 10;
             }
 
             .c2 {

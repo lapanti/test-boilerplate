@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 import CV from './app/CV'
 import Navigation from './app/Navigation'
+import ScrollToTop from './app/ScrollToTop'
 import Setup from './app/Setup'
 import Whoami from './app/Whoami'
 import { routesObj } from './constants/routes'
@@ -16,7 +17,8 @@ const Page = styled.div`
     display: grid;
     grid-template-rows: auto 1fr;
     grid-template-areas: 'navigation' 'content';
-    height: 100vh;
+    min-height: calc(100vh - var(--xxl));
+    padding-bottom: var(--xxl);
 `
 
 const Content = styled.article`
@@ -34,6 +36,7 @@ const App: React.FunctionComponent = () => {
     return (
         <BrowserRouter>
             <GlobalStyle isDarkMode={isDarkMode} />
+            <ScrollToTop />
             <Page>
                 <Navigation />
                 <Content>

@@ -11,6 +11,10 @@ const Nav = styled.nav`
     display: grid;
     grid-template-columns: repeat(${routesArray.length}, auto) 1fr;
     padding: var(--l) var(--m);
+    position: sticky;
+    top: 0;
+    background: var(--background-primary);
+    z-index: 10;
 `
 
 const activeClassName = 'active-navlink'

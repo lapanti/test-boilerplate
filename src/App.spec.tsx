@@ -40,7 +40,8 @@ describe('<App />', () => {
               display: grid;
               grid-template-rows: auto 1fr;
               grid-template-areas: 'navigation' 'content';
-              height: 100vh;
+              min-height: calc(100vh - var(--xxl));
+              padding-bottom: var(--xxl);
             }
 
             .c1 {
@@ -88,7 +89,8 @@ describe('<App />', () => {
               display: grid;
               grid-template-rows: auto 1fr;
               grid-template-areas: 'navigation' 'content';
-              height: 100vh;
+              min-height: calc(100vh - var(--xxl));
+              padding-bottom: var(--xxl);
             }
 
             .c1 {
@@ -136,7 +138,8 @@ describe('<App />', () => {
               display: grid;
               grid-template-rows: auto 1fr;
               grid-template-areas: 'navigation' 'content';
-              height: 100vh;
+              min-height: calc(100vh - var(--xxl));
+              padding-bottom: var(--xxl);
             }
 
             .c1 {
