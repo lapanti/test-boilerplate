@@ -25,6 +25,9 @@ jobs:
             - name: Release
               run: npm run release
 
+            - name: Test
+              run: echo ${{ secrets.PAT }}
+
             - name: Set origin
               run: git remote set-url origin https://lapanti:${{ secrets.PAT }}@github.com/lapanti/lapanti.github.io.git
 
