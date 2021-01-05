@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.2 (2021-01-05)
+
+
+### Bug Fixes
+
+* scrolling, extra content and sticky header ([4825f32](https://github.com/lapanti/lapanti.github.io/commit/4825f322f43578742088f4af6d27ded4340096f5))
+
 ### 1.0.1 (2021-01-05)
 
 ## [1.0.0](https://github.com/lapanti/lapanti.github.io/compare/v0.2.1...v1.0.0) (2021-01-05)
