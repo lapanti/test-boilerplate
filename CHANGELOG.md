@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.2.0 (2021-01-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* update badges (testing major version as well)
+
+### Features
+
+* update badges (testing major version as well) ([0059901](https://github.com/lapanti/lapanti.github.io/commit/0059901f7a343cb75da15417e2274df593ddbcf8))
+
 ### 0.1.2 (2021-01-05)
 
 ### 0.1.1 (2021-01-04)
