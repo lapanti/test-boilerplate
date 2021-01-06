@@ -1,12 +1,12 @@
-import './logo.svg'
+import './App'
 
-const mockRender = jest.fn()
+import ReactDOM from 'react-dom'
 
 jest.mock('react-dom', () => ({
     __esModule: true,
     default: {
         ...jest.requireActual('react-dom'),
-        render: mockRender,
+        render: jest.fn(),
     },
 }))
 jest.mock('./lib/preference', () => ({ prefersDarkMode: jest.fn().mockReturnValue(true) }))
@@ -17,7 +17,7 @@ describe('index', () => {
     it('should call ReactDOM.render with correct args', async () => {
         await import('./index')
         expect(mockGetElementById).toHaveBeenCalledWith('root')
-        expect(mockRender.mock.calls).toMatchInlineSnapshot(`
+        expect((ReactDOM.render as ReturnType<typeof jest.fn>).mock.calls).toMatchInlineSnapshot(`
             Array [
               Array [
                 <UNDEFINED>
