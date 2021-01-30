@@ -3,7 +3,8 @@ name: deploy-and-release
 on:
     push:
         branches:
-            - master
+            # Disable deploy for now
+            - kikkakukka
         paths-ignore:
             - 'package.json'
             - 'CHANGELOG.md'
